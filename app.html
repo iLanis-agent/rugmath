@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rug math - room fit, dining pull-out, sofa rule</title>
+<style>
+  :root { --ink:#101c2b; --accent:#2b4a6f; --paper:#f7f9fb; --card:#ffffff; --line:#d9e1ea; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:var(--paper); color:var(--ink); }
+  header { padding:2rem 1.25rem 1rem; max-width:960px; margin:0 auto; }
+  h1 { font-size:1.9rem; margin:0 0 .35rem; }
+  header p { margin:.25rem 0; color:#2f4a63; max-width:46rem; line-height:1.45; }
+  .norms { font-size:.9rem; color:#41597a; margin-top:.6rem; }
+  main { max-width:960px; margin:0 auto; padding:0 1.25rem 3rem; display:grid; gap:1.25rem; }
+  @media (min-width:820px){ main { grid-template-columns:1fr 1fr 1fr; } }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:1.1rem 1.1rem 1.25rem; }
+  .card h2 { font-size:1.15rem; margin:.1rem 0 .5rem; }
+  .card p.desc { font-size:.9rem; color:#41597a; margin:.2rem 0 .8rem; line-height:1.4; }
+  label { display:block; font-size:.85rem; margin:.55rem 0 .15rem; color:#2c445e; }
+  input { width:100%; padding:.45rem .5rem; font-size:1rem; border:1px solid var(--line); border-radius:6px; font-family:inherit; background:#fff; }
+  button { margin-top:.8rem; width:100%; padding:.55rem; font-size:1rem; font-family:inherit; background:var(--accent); color:#fff; border:0; border-radius:6px; cursor:pointer; }
+  button:hover { background:#203a58; }
+  .out { margin-top:.9rem; font-size:.95rem; line-height:1.5; min-height:3.2rem; }
+  .err { color:#a02323; }
+  footer { max-width:960px; margin:0 auto; padding:0 1.25rem 2.5rem; font-size:.85rem; color:#6d849a; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Rug math</h1>
+  <p>Size the rug to the room, keep the dining chairs on it, pass the front-legs rule. Exact arithmetic, every borrowed number labeled.</p>
+  <p class="norms">Labeled norms: 45 cm bare-floor border, 60 cm chair pull-out, standard sizes 120x180 to 300x400 cm. Decorating norms, not law - your room wins.</p>
+</header>
+<main>
+  <section class="card" id="room">
+    <h2>Room fit</h2>
+    <p class="desc">Room size and the bare-floor border become the largest standard rug that fits.</p>
+    <label for="r-l">Room length (cm)</label>
+    <input id="r-l" type="number" step="5" min="1" value="420">
+    <label for="r-w">Room width (cm)</label>
+    <input id="r-w" type="number" step="5" min="1" value="340">
+    <label for="r-b">Bare-floor border (cm)</label>
+    <input id="r-b" type="number" step="5" min="0" value="45">
+    <button id="r-go">Fit the room</button>
+    <div class="out" id="r-out"></div>
+  </section>
+
+  <section class="card" id="dining">
+    <h2>Dining pull-out</h2>
+    <p class="desc">Table size and the pull-out norm become the minimum rug for the chairs.</p>
+    <label for="d-l">Table length (cm)</label>
+    <input id="d-l" type="number" step="5" min="1" value="180">
+    <label for="d-w">Table width (cm)</label>
+    <input id="d-w" type="number" step="5" min="1" value="90">
+    <label for="d-p">Chair pull-out (cm)</label>
+    <input id="d-p" type="number" step="5" min="0" value="60">
+    <button id="d-go">Size the dining rug</button>
+    <div class="out" id="d-out"></div>
+  </section>
+
+  <section class="card" id="sofa">
+    <h2>Sofa rule</h2>
+    <p class="desc">Sofa length against rug length - front legs on, or how short it falls.</p>
+    <label for="s-l">Sofa length (cm)</label>
+    <input id="s-l" type="number" step="5" min="1" value="220">
+    <label for="s-r">Rug length (cm)</label>
+    <input id="s-r" type="number" step="5" min="1" value="240">
+    <button id="s-go">Check the rule</button>
+    <div class="out" id="s-out"></div>
+  </section>
+</main>
+<footer>Built by the app factory. <a href="index.html">About</a> &middot; <a href="https://github.com/iLanis-agent/rugmath">Source</a></footer>
+<script src="engine.js"></script>
+<script>
+function num(id){ return parseFloat(document.getElementById(id).value); }
+function show(id, r, render){
+  var el = document.getElementById(id);
+  if (r.error) { el.textContent = r.error; el.classList.add('err'); }
+  else { el.textContent = render(r); el.classList.remove('err'); }
+}
+document.getElementById('r-go').addEventListener('click', function(){
+  show('r-out', RugMath.roomRug(num('r-l'),num('r-w'),num('r-b')), RugMath.renderRoom);
+});
+document.getElementById('d-go').addEventListener('click', function(){
+  show('d-out', RugMath.diningRug(num('d-l'),num('d-w'),num('d-p')), RugMath.renderDining);
+});
+document.getElementById('s-go').addEventListener('click', function(){
+  show('s-out', RugMath.sofaRule(num('s-l'),num('s-r')), RugMath.renderSofa);
+});
+</script>
+</body>
+</html>
