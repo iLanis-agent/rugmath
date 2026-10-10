@@ -1,0 +1,441 @@
+[
+ {
+  "tool": "room",
+  "args": [
+   420,
+   340,
+   45
+  ],
+  "expect": {
+   "maxL": 330.0,
+   "maxW": 250.0,
+   "size": [
+    200,
+    300
+   ],
+   "actual": 60.0,
+   "verdict": "largest standard that fits: 200 x 300 cm"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   500,
+   400,
+   60
+  ],
+  "expect": {
+   "maxL": 380.0,
+   "maxW": 280.0,
+   "size": [
+    240,
+    340
+   ],
+   "actual": 80.0,
+   "verdict": "largest standard that fits: 240 x 340 cm"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   360,
+   300,
+   45
+  ],
+  "expect": {
+   "maxL": 270.0,
+   "maxW": 210.0,
+   "size": [
+    170,
+    240
+   ],
+   "actual": 60.0,
+   "verdict": "largest standard that fits: 170 x 240 cm"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   300,
+   300,
+   30
+  ],
+  "expect": {
+   "maxL": 240.0,
+   "maxW": 240.0,
+   "size": [
+    170,
+    240
+   ],
+   "actual": 30.0,
+   "verdict": "largest standard that fits: 170 x 240 cm"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   250,
+   220,
+   40
+  ],
+  "expect": {
+   "maxL": 170.0,
+   "maxW": 140.0,
+   "size": null,
+   "actual": null,
+   "verdict": "no standard size fits - go custom or round"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   150,
+   150,
+   45
+  ],
+  "expect": {
+   "maxL": 60.0,
+   "maxW": 60.0,
+   "size": null,
+   "actual": null,
+   "verdict": "no standard size fits - go custom or round"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   600,
+   500,
+   45
+  ],
+  "expect": {
+   "maxL": 510.0,
+   "maxW": 410.0,
+   "size": [
+    300,
+    400
+   ],
+   "actual": 100.0,
+   "verdict": "largest standard that fits: 300 x 400 cm"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   455,
+   355,
+   52.5
+  ],
+  "expect": {
+   "maxL": 350.0,
+   "maxW": 250.0,
+   "size": [
+    240,
+    340
+   ],
+   "actual": 57.5,
+   "verdict": "largest standard that fits: 240 x 340 cm"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   390,
+   310,
+   50
+  ],
+  "expect": {
+   "maxL": 290.0,
+   "maxW": 210.0,
+   "size": [
+    170,
+    240
+   ],
+   "actual": 75.0,
+   "verdict": "largest standard that fits: 170 x 240 cm"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   0,
+   340,
+   45
+  ],
+  "expect": {
+   "error": "room size must be positive"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   -420,
+   340,
+   45
+  ],
+  "expect": {
+   "error": "room size must be positive"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   420,
+   0,
+   45
+  ],
+  "expect": {
+   "error": "room size must be positive"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   420,
+   340,
+   -10
+  ],
+  "expect": {
+   "error": "border must not be negative"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   80,
+   80,
+   45
+  ],
+  "expect": {
+   "error": "border eats the whole room"
+  }
+ },
+ {
+  "tool": "room",
+  "args": [
+   90,
+   90,
+   45
+  ],
+  "expect": {
+   "error": "border eats the whole room"
+  }
+ },
+ {
+  "tool": "dining",
+  "args": [
+   180,
+   90,
+   60
+  ],
+  "expect": {
+   "minL": 300.0,
+   "minW": 210.0
+  }
+ },
+ {
+  "tool": "dining",
+  "args": [
+   140,
+   80,
+   60
+  ],
+  "expect": {
+   "minL": 260.0,
+   "minW": 200.0
+  }
+ },
+ {
+  "tool": "dining",
+  "args": [
+   200,
+   100,
+   75
+  ],
+  "expect": {
+   "minL": 350.0,
+   "minW": 250.0
+  }
+ },
+ {
+  "tool": "dining",
+  "args": [
+   160,
+   160,
+   60
+  ],
+  "expect": {
+   "minL": 280.0,
+   "minW": 280.0
+  }
+ },
+ {
+  "tool": "dining",
+  "args": [
+   120,
+   70,
+   0
+  ],
+  "expect": {
+   "minL": 120.0,
+   "minW": 70.0
+  }
+ },
+ {
+  "tool": "dining",
+  "args": [
+   175.5,
+   88.5,
+   62.5
+  ],
+  "expect": {
+   "minL": 300.5,
+   "minW": 213.5
+  }
+ },
+ {
+  "tool": "dining",
+  "args": [
+   0,
+   90,
+   60
+  ],
+  "expect": {
+   "error": "table size must be positive"
+  }
+ },
+ {
+  "tool": "dining",
+  "args": [
+   180,
+   -90,
+   60
+  ],
+  "expect": {
+   "error": "table size must be positive"
+  }
+ },
+ {
+  "tool": "dining",
+  "args": [
+   180,
+   90,
+   -5
+  ],
+  "expect": {
+   "error": "pull-out must not be negative"
+  }
+ },
+ {
+  "tool": "sofa",
+  "args": [
+   220,
+   240
+  ],
+  "expect": {
+   "fits": true,
+   "ext": 10.0,
+   "verdict": "front legs on, extends 10 cm past each arm"
+  }
+ },
+ {
+  "tool": "sofa",
+  "args": [
+   220,
+   160
+  ],
+  "expect": {
+   "fits": false,
+   "ext": null,
+   "verdict": "too short by 60 cm - front legs off the rug"
+  }
+ },
+ {
+  "tool": "sofa",
+  "args": [
+   220,
+   220
+  ],
+  "expect": {
+   "fits": true,
+   "ext": 0.0,
+   "verdict": "front legs on, extends 0 cm past each arm"
+  }
+ },
+ {
+  "tool": "sofa",
+  "args": [
+   180,
+   300
+  ],
+  "expect": {
+   "fits": true,
+   "ext": 60.0,
+   "verdict": "front legs on, extends 60 cm past each arm"
+  }
+ },
+ {
+  "tool": "sofa",
+  "args": [
+   250.5,
+   240.5
+  ],
+  "expect": {
+   "fits": false,
+   "ext": null,
+   "verdict": "too short by 10 cm - front legs off the rug"
+  }
+ },
+ {
+  "tool": "sofa",
+  "args": [
+   200,
+   240.5
+  ],
+  "expect": {
+   "fits": true,
+   "ext": 20.3,
+   "verdict": "front legs on, extends 20.3 cm past each arm"
+  }
+ },
+ {
+  "tool": "sofa",
+  "args": [
+   0,
+   240
+  ],
+  "expect": {
+   "error": "sofa length must be positive"
+  }
+ },
+ {
+  "tool": "sofa",
+  "args": [
+   -220,
+   240
+  ],
+  "expect": {
+   "error": "sofa length must be positive"
+  }
+ },
+ {
+  "tool": "sofa",
+  "args": [
+   220,
+   0
+  ],
+  "expect": {
+   "error": "rug length must be positive"
+  }
+ },
+ {
+  "tool": "sofa",
+  "args": [
+   220,
+   -10
+  ],
+  "expect": {
+   "error": "rug length must be positive"
+  }
+ }
+]
